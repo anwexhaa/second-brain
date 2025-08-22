@@ -12,15 +12,19 @@ from routes import multi_route
 from routes import rag_fusion_route
 from routes import query_decomposition_route
 from routes import hyde_fusion_route
+import os  # <--- Add this
+
 # from utils.auth_middleware import firebase_auth_middleware  # Updated middleware
 
 load_dotenv()
 app = FastAPI()
 
 # ------------------ MIDDLEWARE ------------------
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[frontend_url],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

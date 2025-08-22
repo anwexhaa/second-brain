@@ -24,7 +24,7 @@ export default function ChatInput() {
     formData.append('file', selectedFile);
 
     try {
-      const res = await fetch('http://localhost:8000/upload/upload/', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/upload/upload`, {
         method: 'POST',
         body: formData,
       });
@@ -51,7 +51,7 @@ export default function ChatInput() {
     setIsTyping(true);
 
     try {
-      const res = await fetch('http://localhost:8000/ask', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/ask`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: trimmed, namespace: 'default' }),
