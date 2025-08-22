@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.orbWrapper {
+  margin-bottom: 2rem;
+}
+
+.bottomBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.input::placeholder {
+  color: #888;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  color: #ff69b4;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.iconButton:hover {
+  color: #fff;
+}
+
+.spinner svg {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

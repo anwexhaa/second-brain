@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace;
+  background-color: #000000;
+  color: #ff69b4; /* terminal pink */
+  height: 100%;
+  overflow: hidden;
+  cursor: default;
+}
+
+a {
+  color: #ff69b4;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+button, input {
+  background: transparent;
+  border: none;
+  color: #ff69b4;
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff69b4;
+  border-radius: 3px;
+}

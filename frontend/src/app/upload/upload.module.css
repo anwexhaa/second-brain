@@ -1,0 +1,139 @@
+/* .container {
+  height: 100vh;
+  background-color: #0f0f0f;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  color: #fff;
+}
+
+.orbWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottomBar {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  gap: 0.75rem;
+  padding-bottom: 2rem;
+}
+
+.inputFile {
+  flex: 1;
+  padding: 1rem;
+  background: #1a1a1a;
+  color: white;
+  border: 1px dashed #444;
+  border-radius: 8px;
+}
+
+.submit {
+  padding: 1rem 1.25rem;
+  background: #00ffd5;
+  color: #000;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit:disabled {
+  background: #333;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.statusBox {
+  position: absolute;
+  bottom: 100px;
+  background: #1a1a1a;
+  padding: 1rem;
+  border-radius: 8px;
+  color: #0f0;
+  font-size: 0.85rem;
+}
+
+.link {
+  display: block;
+  color: #00ffd5;
+  text-decoration: underline;
+  margin-top: 0.3rem;
+}
+@media (min-width: 768px) {
+  .bottomBar {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    max-width: 720px;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .input {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1rem;
+    background: #1a1a1a;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 8px;
+    margin-right: 0.5rem;
+  }
+
+  .uploadLabel {
+    background: #444;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+
+  .submit {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .bottomBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: #0f0f0f;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 1000;
+  }
+
+  .input {
+    flex: 1;
+    padding: 1rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: white;
+  }
+
+  .uploadLabel {
+    background: #444;
+    padding: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .submit {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+} */

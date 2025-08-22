@@ -1,0 +1,20 @@
+.orbContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.orb {
+  width: 60px;
+  height: 60px;
+  background-color: #ff69b4;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #ff69b4; }
+  50% { box-shadow: 0 0 30px #ff69b4; }
+  100% { box-shadow: 0 0 10px #ff69b4; }
+}

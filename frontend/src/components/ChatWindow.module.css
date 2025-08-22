@@ -1,0 +1,31 @@
+.chatContainer {
+  padding: 1rem;
+  overflow-y: auto;
+  flex-grow: 1;
+  max-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  padding: 12px 16px;
+  margin: 8px 0;
+  border-radius: 10px;
+  max-width: 75%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+}
+
+/* User → pink */
+.userMessage {
+  background-color: #ffc0cb; /* pastel pink */
+  align-self: flex-end;
+  color: #000;
+}
+
+/* AI → white */
+.aiMessage {
+  background-color: #fff;
+  align-self: flex-start;
+  color: #000;
+}

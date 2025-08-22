@@ -1,0 +1,35 @@
+# Ignore Python virtual environments
+venv/
+vnv/
+
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+
+# Environment variables
+.env
+.env.*
+
+# Ignore IDE/editor files
+.vscode/
+.idea/
+.DS_Store
+
+# OS generated files
+Thumbs.db
+
+# Logs
+*.log
+
+# Ignore uploads or temporary files
+uploads/
+tmp/
+*.bak
+
+# Ignore frontend dependencies if present
+node_modules/
+dist/
+build/
+
+firebase_service_account.json

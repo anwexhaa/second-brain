@@ -1,0 +1,104 @@
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background-color: #0d0d0d;
+  border-right: 1px solid #ff69b4;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.newChat {
+  background-color: transparent;
+  border: 1px solid #ff69b4;
+  color: #ff69b4;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.newChat:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.search {
+  padding: 6px;
+  border: 1px solid #ff69b4;
+  background-color: #0d0d0d;
+  color: #ff69b4;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.chatList {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.chatItem {
+  padding: 8px;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.chatItem:hover {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.activeChat {
+  background-color: #ff69b4;
+  color: #000;
+}
+
+.chatRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.chatTitle {
+  flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.renameWrapper {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  width: 100%;
+}
+
+.renameInput {
+  flex-grow: 1;
+  padding: 4px 6px;
+  background-color: #0d0d0d;
+  border: 1px solid #ff69b4;
+  color: #ff69b4;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.renameIcon {
+  background: none;
+  border: none;
+  color: #ff69b4;
+  cursor: pointer;
+  padding: 2px;
+  transition: color 0.2s ease;
+}
+
+.renameIcon:hover {
+  color: #ffffff;
+}
