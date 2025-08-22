@@ -1,5 +1,5 @@
 import re
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 def clean_text(text: str) -> str:
     text = re.sub(r'\s+', ' ', text)
