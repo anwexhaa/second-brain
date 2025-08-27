@@ -1,8 +1,23 @@
 # utils/qa.py
-from transformers import pipeline
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
 
-qa_model = pipeline("question-answering", model="distilbert-base-cased-distilled-squad")
+load_dotenv()
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def get_answer(question: str, context: str) -> str:
-    result = qa_model(question=question, context=context)
-    return result["answer"]
+    if not question or not context:
+        return ""
+    prompt = f"Answer the question based on the context:\n\nContext:\n{context}\n\nQuestion:\n{question}\nAnswer:"
+    try:
+        response = genai.generate_text(
+            model="models/text-bison-001",
+            prompt=prompt,
+            temperature=0.7,
+            max_output_tokens=200
+        )
+        return response.text.strip()
+    except Exception as e:
+        print(f"Error generating answer: {e}")
+        return ""

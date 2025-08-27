@@ -1,11 +1,10 @@
+# services/multi_service.py
 from services.pinecone_services import query_pinecone
-from transformers import pipeline
-from services.openai_services import get_embedding, get_answer
+from services.local_embedding_service import get_local_embedding
+from utils.qa import get_answer
 
-# 🔧 Score threshold (tweak if needed)
-SCORE_THRESHOLD = 0.0  # temporarily allow all results
+SCORE_THRESHOLD = 0.0  # allow all results
 
-# Generate multiple reformulations of the question
 def generate_queries(question: str) -> list[str]:
     return [
         question,
@@ -13,12 +12,13 @@ def generate_queries(question: str) -> list[str]:
         f"Explain: {question}",
         f"{question} in simple words"
     ]
+
 def multi_query(question: str, namespace: str = "default") -> str:
     queries = generate_queries(question)
     all_matches = []
 
     for q in queries:
-        emb = get_embedding(q)
+        emb = get_local_embedding(q)
         if emb:
             res = query_pinecone(emb, namespace=namespace)
             if res:

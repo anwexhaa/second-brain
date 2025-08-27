@@ -1,9 +1,23 @@
 # services/local_llm_service.py
-from transformers import pipeline
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
 
-qa_pipeline = pipeline("text-generation", model="tiiuae/falcon-rw-1b", tokenizer="tiiuae/falcon-rw-1b")
+load_dotenv()
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-def get_local_answer(question: str, context: str):
+def get_local_answer(question: str, context: str) -> str:
+    if not question or not context:
+        return ""
     prompt = f"Answer the question based on the context:\n\nContext:\n{context}\n\nQuestion:\n{question}\nAnswer:"
-    result = qa_pipeline(prompt, max_new_tokens=200, do_sample=True, temperature=0.7)
-    return result[0]["generated_text"].replace(prompt, "").strip()
+    try:
+        response = genai.generate_text(
+            model="models/text-bison-001",
+            prompt=prompt,
+            temperature=0.7,
+            max_output_tokens=200
+        )
+        return response.text.strip()
+    except Exception as e:
+        print(f"Error generating answer: {e}")
+        return ""
