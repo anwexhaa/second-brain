@@ -26,7 +26,7 @@ def read_root():
 
 
 # ------------------ MIDDLEWARE ------------------
-frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+frontend_url = os.getenv("FRONTEND_URL", "https://second-brain-fawn.vercel.app")
 
 app.add_middleware(
     CORSMiddleware,
