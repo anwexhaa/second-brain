@@ -1,0 +1,14 @@
+[33m2ebb297[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Resolved merge conflict in requirements.txt
+[33m1895d0e[m more changes
+[33m1eb2cdc[m pillow
+[33m8a32d86[m removed torch
+[33m0f2f4bb[m more req changes
+[33m17a4acb[m more req changes
+[33m6b3b26b[m removed openai
+[33ma4f761e[m more requirements.txt changes
+[33m8c2a9c0[m more pinecone changes
+[33m5c59024[m fix reqs
+[33m74f8356[m langchain fix
+[33m142b21b[m fix requirements.txt
+[33mf313f66[m removing localhosts
+[33me4bcc25[m Initial commit
