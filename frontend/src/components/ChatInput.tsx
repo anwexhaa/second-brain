@@ -4,12 +4,11 @@ import { useState, useRef } from 'react';
 import styles from '@/app/page.module.css';
 import { useChat } from './ChatContext';
 import { FilePlus2, ArrowUpFromLine, Loader2 } from "lucide-react";
-import { auth } from '@/lib/firebase';
 
 export default function ChatInput() {
   const { addMessage, setIsTyping, isTyping } = useChat();
   const [message, setMessage] = useState('');
-  const [fileName, setFileName] = useState('');
+  const [_fileName, setFileName] = useState('');
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 

@@ -209,7 +209,7 @@ export default function LoginPage() {
           color: 'rgba(255,255,255,0.7)',
           fontSize: '0.95rem'
         }}>
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <Link
             href="/signup"
             style={{ 
