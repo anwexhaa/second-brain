@@ -19,6 +19,12 @@ import os  # <--- Add this
 load_dotenv()
 app = FastAPI()
 
+# ------------------ ROOT ROUTE ------------------
+@app.get("/")
+def read_root():
+    return {"message": "Backend is running!"}
+
+
 # ------------------ MIDDLEWARE ------------------
 frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
