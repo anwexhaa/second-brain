@@ -1,9 +1,23 @@
 # services/local_embedding_service.py
-from sentence_transformers import SentenceTransformer
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+# Load environment variables
+load_dotenv()
+
+# Configure Gemini
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def get_local_embedding(text: str):
     if not text:
         return None
-    return model.encode(text, convert_to_numpy=True).tolist()
+    try:
+        result = genai.embed_content(
+            model="models/embedding-001",
+            content=text
+        )
+        return result['embedding']
+    except Exception as e:
+        print(f"Error generating embedding: {e}")
+        return None
