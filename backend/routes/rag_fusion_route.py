@@ -43,9 +43,21 @@ Assistant:"""
             response = generate_hypothetical_answer(prompt)
             return {"answer": response or "Hmm, not sure how to respond — mind rephrasing?"}
 
-        # 🔍 Actual document retrieval via RAG
-        answer = rag_fusion(user_input, req.namespace)
-        return {"answer": answer}
+        # 🔍 Only query RAG if the question is likely factual / about uploaded docs
+        factual_keywords = ["overview", "features", "architecture", "technical", "details", "specs", "implementation"]
+        if any(k in user_input.lower() for k in factual_keywords):
+            answer_data = rag_fusion(user_input, req.namespace)
+            return {"answer": answer_data.get("answer", "❌ Sorry, couldn't find anything."), 
+                    "matches": answer_data.get("matches", [])}
+
+        # 🗣 For anything else, fallback to conversational Gemini
+        prompt = f"""
+You're a helpful AI assistant. Respond naturally to the user's question.
+
+User: {user_input}
+Assistant:"""
+        response = generate_hypothetical_answer(prompt)
+        return {"answer": response or "Hmm, not sure how to respond — mind rephrasing?"}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

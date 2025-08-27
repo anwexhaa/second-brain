@@ -17,7 +17,11 @@ def map_keywords(question: str):
                 return key
     return None
 
-def answer_question(question: str, namespace: str, top_k: int = 5):
+def answer_question(question: str, namespace: str, top_k: int = 5, relevance_threshold: float = 0.5):
+    """
+    Returns an answer to the question using Pinecone retrieval and Gemini LLM.
+    relevance_threshold: minimum Pinecone score to include a snippet in context
+    """
     # Step 0: Keyword mapping
     keyword = map_keywords(question)
     question_for_ai = f"Provide a clear {keyword} from the document." if keyword else question
@@ -29,33 +33,25 @@ def answer_question(question: str, namespace: str, top_k: int = 5):
     pinecone_results = query_pinecone(embedding, namespace=namespace, top_k=top_k) or {}
     matches = pinecone_results.get("matches", [])
 
-    # Step 3: Extract texts
-    texts = [m.get("metadata", {}).get("text", "") for m in matches if m.get("metadata", {}).get("text")]
+    # Step 3: Filter relevant texts for LLM context
+    relevant_texts = []
+    for m in matches:
+        text = m.get("metadata", {}).get("text", "")
+        score = m.get("score", 0)
+        # Include if keyword matches or score is above threshold
+        if keyword and (keyword in text.lower() or any(syn in text.lower() for syn in KEYWORD_SYNONYMS[keyword])):
+            relevant_texts.append(text)
+        elif score >= relevance_threshold:
+            relevant_texts.append(text)
 
-    if not texts:
-        return {"answer": "❌ Sorry, I couldn't find any relevant information.", "matches": []}
+    # Step 4: Generate answer
+    if relevant_texts:
+        final_answer = get_answer(question_for_ai, "\n\n".join(relevant_texts))
+    else:
+        # purely conversational fallback
+        final_answer = get_answer(question, "")
 
-    # --- Step 4: Return exact retrieved snippet if keyword exists ---
-    if keyword:
-        for text in texts:
-            if keyword in text.lower() or any(syn in text.lower() for syn in KEYWORD_SYNONYMS[keyword]):
-                return {
-                    "answer": text.strip(),
-                    "matches": [
-                        {
-                            "text": text.strip(),
-                            "score": m.get("score", 0),
-                            "source": m.get("metadata", {}).get("source", "unknown")
-                        }
-                        for m in matches
-                        if m.get("metadata", {}).get("text") == text
-                    ]
-                }
-
-    # Step 5: Only generate with get_answer() if NO relevant snippet is found
-    final_answer = get_answer(question_for_ai, "\n\n".join(texts))
-
-    # Step 6: Format matches for frontend
+    # Step 5: Format matches for frontend (even if empty)
     formatted_matches = [
         {
             "text": m.get("metadata", {}).get("text", ""),
