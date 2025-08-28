@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { useChat } from './ChatContext';
+import ReactMarkdown from 'react-markdown';
 import styles from './ChatWindow.module.css';
 
 export default function ChatWindow() {
@@ -21,7 +22,8 @@ export default function ChatWindow() {
             msg.sender === 'user' ? styles.userMessage : styles.aiMessage
           }`}
         >
-          <strong>{msg.sender === 'user' ? 'You' : 'AI'}:</strong> {msg.text}
+          <strong>{msg.sender === 'user' ? 'You' : 'AI'}:</strong>{' '}
+          <ReactMarkdown>{msg.text}</ReactMarkdown>
         </div>
       ))}
 
