@@ -6,7 +6,6 @@
 [![Next.js](https://img.shields.io/badge/Next.js-13.5-purple?logo=next.js&logoColor=white)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18.2-purple?logo=react)](https://reactjs.org/)
 [![Python](https://img.shields.io/badge/Python-3.10-purple?logo=python&logoColor=white)](https://www.python.org/)
-[![Last Commit](https://img.shields.io/github/last-commit/anwexhaa/second-brain?color=purple)](https://github.com/anwexhaa/second-brain)
 
 
 ### 🌐 **[Live Demo](https://second-brain-fawn.vercel.app/)** | ⭐ **Star this repo**
