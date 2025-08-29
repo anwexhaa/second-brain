@@ -1,36 +1,166 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠⚡ Second Brain 🕹️
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+[![License: MIT](https://img.shields.io/badge/License-MIT-purple)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-13.5-purple?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18.2-purple?logo=react)](https://reactjs.org/)
+[![Python](https://img.shields.io/badge/Python-3.10-purple?logo=python&logoColor=white)](https://www.python.org/)
+[![Last Commit](https://img.shields.io/github/last-commit/anwexhaa/second-brain?color=purple)](https://github.com/anwexhaa/second-brain)
+
+### 🌐 **[Live Demo](https://second-brain-fawn.vercel.app/)** | ⭐ **Star this repo**
+
+*AI-Powered Personal Knowledge Base*  
+**Store, retrieve, and chat with your knowledge** using RAG pipelines, embeddings, and a futuristic retro-dark UI.
+
+</div>
+
+---
+
+## 🚀 Features & Superpowers
+
+<table>
+<tr>
+<td>⚡ <strong>AI Knowledge Chat</strong></td>
+<td>Converse with your stored documents, notes, and resources</td>
+</tr>
+<tr>
+<td>📂 <strong>Smart Ingestion</strong></td>
+<td>Upload PDFs, notes, and text—auto-chunked and embedded into vector DB</td>
+</tr>
+<tr>
+<td>🤖 <strong>RAG Pipeline</strong></td>
+<td>Context-aware answers powered by OpenAI + LangChain</td>
+</tr>
+<tr>
+<td>🛡️ <strong>Secure Auth</strong></td>
+<td>Firebase Auth + PostgreSQL for protected user spaces</td>
+</tr>
+<tr>
+<td>🧩 <strong>Knowledge Orb</strong></td>
+<td>Dynamic visualization of your stored knowledge base</td>
+</tr>
+<tr>
+<td>🌌 <strong>Dark Retro UI</strong></td>
+<td>Terminal-inspired aesthetics with smooth animations</td>
+</tr>
+</table>
+
+---
+
+## 💡 Why Second Brain?
+
+> **Because your brain deserves an upgrade.**  
+> Store, connect, and recall your knowledge instantly—with the vibe of a hacker terminal fused with AI superpowers. 🕹️
+
+---
+
+## 🖼️ Preview
+
+<div align="center">
+
+| 🧠 Chat Interface | 📂 Upload Portal | 🌌 Login Screen |
+|:---:|:---:|:---:|
+| ![Chat](/public/chat.png) | ![Upload](/public/upload.png) | ![Login](/public/login.png) |
+
+</div>
+
+---
+
+## ⚡ Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 🔥 Clone & Setup
+git clone https://github.com/anwexhaa/second-brain.git
+cd second-brain
+
+# 🎨 Frontend Setup
+cd frontend
+npm install  # or yarn/pnpm install
+
+# 🐍 Backend Setup  
+cd ../backend
+pip install -r requirements.txt
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🔐 Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Frontend** (`.env.local`)
+```env
+NEXT_PUBLIC_OPENAI_API_KEY=your_openai_api_key
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Backend** (`.env`)
+```env
+OPENAI_API_KEY=your_openai_api_key
+DATABASE_URL=your_postgres_url
+FIREBASE_PROJECT_ID=your_firebase_project_id
+VECTOR_DB_API_KEY=your_pinecone_or_chroma_key
+```
 
-## Learn More
+### 🚀 Launch Servers
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Frontend (Terminal 1)
+cd frontend && npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Backend (Terminal 2)
+cd backend && uvicorn main:app --reload
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**🎉 Visit `http://localhost:3000` and start building your Second Brain!**
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<div align="center">
+
+| Category | Technologies |
+|:---:|:---:|
+| **Frontend** | Next.js, React, Tailwind CSS |
+| **Backend** | FastAPI (Python) |
+| **Database** | PostgreSQL + Pinecone (Vector DB) |
+| **Authentication** | Firebase Auth |
+| **AI Pipeline** | LangChain + OpenAI Embeddings |
+| **Deployment** | Vercel + Railway/Render |
+
+</div>
+
+---
+
+## 🌍 Deployment
+
+- **🎯 Frontend**: Live at [second-brain-fawn.vercel.app](https://second-brain-fawn.vercel.app)
+- **⚙️ Backend**: Deploy on Railway, Render, or any cloud provider
+- **💾 Database**: Use Supabase or Neon for PostgreSQL
+- **🔍 Vector DB**: Pinecone (managed) or Chroma (self-hosted)
+
+---
+
+## 🤝 Contributing
+
+We love contributions! Here's how to get involved:
+
+1. **🍴 Fork** the repository
+2. **🌿 Create** your feature branch: `git checkout -b feature/amazing-feature`
+3. **💾 Commit** your changes: `git commit -m 'Add amazing feature'`
+4. **🚀 Push** to branch: `git push origin feature/amazing-feature`
+5. **🎯 Open** a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE) - see the file for details.
+
+---
+
+<div align="center">
+
+**⭐ Star this repo if it helped you build your Second Brain!**  
+
+Made with 💜 by [anwexhaa](https://github.com/anwexhaa)
+
+</div>
