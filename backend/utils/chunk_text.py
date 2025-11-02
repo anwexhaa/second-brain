@@ -1,5 +1,5 @@
 import re
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.text_splitters import RecursiveCharacterTextSplitter
 
 def clean_text(text: str) -> str:
     """
