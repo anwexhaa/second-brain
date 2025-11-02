@@ -16,16 +16,19 @@ pc = Pinecone(api_key=config.PINECONE_API_KEY)
 index = pc.Index(config.PINECONE_INDEX_NAME)
 
 def generate_embedding(text: str) -> List[float]:
-    """Generate embedding for a single text using Gemini."""
     try:
         result = genai.embed_content(
-            model="models/embedding-004",
+            model="models/text-embedding-004",
             content=text
         )
         return result['embedding']
     except Exception as e:
-        print(f"Error generating embedding for text: {e}")
+        import traceback
+        print("❌ Embedding generation failed:")
+        traceback.print_exc()
+        print(f"↪️ Text snippet: {text[:150]!r}")  # See what content triggered it
         return []
+
 
 def embed_texts(texts: List[str], metadata_list: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
