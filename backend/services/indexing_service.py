@@ -96,3 +96,9 @@ if __name__ == "__main__":
 
     response = summarize_document(sample_text)
     print(response)
+def index_text_to_pinecone(text: str, namespace: str = "default"):
+    """
+    Legacy placeholder to keep compatibility with old routes.
+    It now just summarizes text instead of embedding.
+    """
+    return summarize_document(text)
