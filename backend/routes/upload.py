@@ -4,8 +4,7 @@ import pdfplumber
 import fitz  # PyMuPDF
 from dotenv import load_dotenv
 import google.generativeai as genai
-
-from utils.chunk_text import get_text_chunks  # still useful for clean input
+from utils.chunk_text import get_text_chunks
 
 # Load .env and setup Gemini
 load_dotenv()
@@ -13,11 +12,14 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 router = APIRouter()
 
+# simple in-memory text store (namespace → text)
+uploaded_texts = {}
+
 @router.post("/upload/")
 async def upload_pdf(file: UploadFile = File(...), namespace: str = Form("default")):
     """
-    Uploads a PDF, extracts its text, summarizes it using Gemini 2.0 Flash, 
-    and returns the summary (no embeddings or Pinecone).
+    Upload a PDF, extract its text, store it for later queries,
+    and return an immediate summary using Gemini 2.0 Flash.
     """
     try:
         # Save uploaded file temporarily
@@ -35,7 +37,7 @@ async def upload_pdf(file: UploadFile = File(...), namespace: str = Form("defaul
         except Exception:
             text = ""
 
-        # If still empty, fallback to PyMuPDF
+        # Fallback to PyMuPDF if pdfplumber fails
         if not text.strip():
             try:
                 with fitz.open(temp_file_path) as doc:
@@ -48,19 +50,21 @@ async def upload_pdf(file: UploadFile = File(...), namespace: str = Form("defaul
         if not text.strip():
             raise HTTPException(status_code=400, detail="No text extracted from file")
 
-        # Optional: chunk text if very long (prevents hitting token limits)
+        # store extracted text in memory (for later queries)
+        uploaded_texts[namespace] = text
+
+        # Chunk + summarize part of it for immediate feedback
         chunks = get_text_chunks(text)
-        limited_text = "\n\n".join(chunks[:5])  # summarize first few chunks if huge
+        limited_text = "\n\n".join(chunks[:5])  # summarize only first few chunks
 
-        # --- Use Gemini Flash for summarization ---
         model = genai.GenerativeModel("gemini-2.0-flash")
-        prompt = f"Summarize the following document in detail:\n\n{limited_text}"
+        prompt = f"Summarize the following document clearly and concisely:\n\n{limited_text}"
         response = model.generate_content(prompt)
-
         summary = response.text.strip() if response and response.text else "No summary generated."
 
         return {
-            "message": f"File processed successfully: {file.filename}",
+            "message": f"File processed and stored successfully: {file.filename}",
+            "namespace": namespace,
             "summary": summary,
         }
 
