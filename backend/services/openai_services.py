@@ -20,7 +20,7 @@ def get_embedding(text: str) -> list[float]:
         return []
 
 # Use Gemini for LLM generation
-gemini_model = genai.GenerativeModel("gemini-1.5-flash")  # or "gemini-1.5-pro"
+gemini_model = genai.GenerativeModel("gemini-2.0-flash")  # or "gemini-1.5-pro"
 
 def generate_hypothetical_answer(prompt: str) -> str:
     try:

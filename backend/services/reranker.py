@@ -27,7 +27,7 @@ def calculate_relevance_score(query: str, document_text: str) -> float:
     """
     
     try:
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-2.0-flash")
         response = model.generate_content(prompt)
         score = float(response.text.strip())
         # Ensure score is between 0 and 1
